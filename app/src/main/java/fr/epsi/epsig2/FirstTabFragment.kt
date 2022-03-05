@@ -65,7 +65,7 @@ class FirstTabFragment : Fragment() {
         editTextEmailAddress.setText(readSharedPreferences("editTextZipcode"))
         editTextEmailAddress.setText(readSharedPreferences("editTextBarcode"))
 
-        displayBitmap("123456789")
+        //displayBitmap("123456789")
 
         buttonSave.setOnClickListener(View.OnClickListener {
             writeSharedPreferences("firstName",editTextFirstName.text.toString())
