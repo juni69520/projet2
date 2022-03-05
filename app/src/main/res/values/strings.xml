@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">EpsiG2Test</string>
+    <string name="hello_world">Hello World</string>
+    <string name="txt_home_nature">Nature</string>
+    <string name="txt_home_space">Espace</string>
+    <string name="txt_home_login">Login</string>
+    <string name="txt_home_create">Create</string>
+    <string name="txt_home_student">Students</string>
+    <string name="txt_home_student_online">Students Online</string>
+    <string name="txt_home_save_data">Save Data</string>
+    <string name="txt_home_fragment">Fragments</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
