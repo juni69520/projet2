@@ -60,10 +60,10 @@ class FirstTabFragment : Fragment() {
         editTextFirstName.setText(readSharedPreferences("firstName"))
         editTextLastName.setText(readSharedPreferences("lastName"))
         editTextEmailAddress.setText(readSharedPreferences("email"))
-        editTextFirstName.setText(readSharedPreferences("editTextAddress"))
-        editTextLastName.setText(readSharedPreferences("editTextCity"))
-        editTextEmailAddress.setText(readSharedPreferences("editTextZipcode"))
-        editTextEmailAddress.setText(readSharedPreferences("editTextBarcode"))
+        //editTextAddress.setText(readSharedPreferences("editTextAddress"))
+        //editTextCity.setText(readSharedPreferences("editTextCity"))
+        //editTextZipcode.setText(readSharedPreferences("editTextZipcode"))
+        //editTextBarcode.setText(readSharedPreferences("editTextBarcode"))
 
         //displayBitmap("123456789")
 
@@ -71,10 +71,10 @@ class FirstTabFragment : Fragment() {
             writeSharedPreferences("firstName",editTextFirstName.text.toString())
             writeSharedPreferences("lastName",editTextLastName.text.toString())
             writeSharedPreferences("email",editTextEmailAddress.text.toString())
-            writeSharedPreferences("address",editTextAddress.text.toString())
-            writeSharedPreferences("city",editTextCity.text.toString())
-            writeSharedPreferences("zipcode",editTextZipcode.text.toString())
-            writeSharedPreferences("barcode",editTextBarcode.text.toString())
+            // writeSharedPreferences("address",editTextAddress.text.toString())
+            //writeSharedPreferences("city",editTextCity.text.toString())
+            //writeSharedPreferences("zipcode",editTextZipcode.text.toString())
+            //writeSharedPreferences("barcode",editTextBarcode.text.toString())
         })
     }
 
