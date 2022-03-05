@@ -36,7 +36,30 @@
                     android:ems="10"
                     android:hint="Email"
                     android:inputType="textEmailAddress" />
-
+                <EditText
+                    android:id="@+id/editTextAddress"
+                    style="@style/EditTextEpsi"
+                    android:ems="10"
+                    android:hint="Adresse"
+                    android:inputType="none" />
+                <EditText
+                    android:id="@+id/editTextCity"
+                    style="@style/EditTextEpsi"
+                    android:ems="10"
+                    android:hint="Ville"
+                    android:inputType="none" />
+                <EditText
+                    android:id="@+id/editTextZipcode"
+                    style="@style/EditTextEpsi"
+                    android:ems="10"
+                    android:hint="Code postal"
+                    android:inputType="none" />
+                <EditText
+                    android:id="@+id/editTextBarcode"
+                    style="@style/EditTextEpsi"
+                    android:ems="10"
+                    android:hint="Code carte"
+                    android:inputType="none" />
                 <ImageView
                     android:id="@+id/image_barcode"
                     android:layout_width="@dimen/width_barcode"

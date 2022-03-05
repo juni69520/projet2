@@ -56,14 +56,13 @@ class FirstTabFragment : Fragment() {
         val editTextBarcode = view.findViewById<EditText>(R.id.editTextBarcode)
         val buttonSave = view.findViewById<Button>(R.id.buttonSave)
 
-
         editTextFirstName.setText(readSharedPreferences("firstName"))
         editTextLastName.setText(readSharedPreferences("lastName"))
         editTextEmailAddress.setText(readSharedPreferences("email"))
-        //editTextAddress.setText(readSharedPreferences("editTextAddress"))
-        //editTextCity.setText(readSharedPreferences("editTextCity"))
-        //editTextZipcode.setText(readSharedPreferences("editTextZipcode"))
-        //editTextBarcode.setText(readSharedPreferences("editTextBarcode"))
+        editTextAddress.setText(readSharedPreferences("address"))
+        editTextCity.setText(readSharedPreferences("city"))
+        editTextZipcode.setText(readSharedPreferences("zipcode"))
+        editTextBarcode.setText(readSharedPreferences("barcode"))
 
         //displayBitmap("123456789")
 
@@ -71,10 +70,10 @@ class FirstTabFragment : Fragment() {
             writeSharedPreferences("firstName",editTextFirstName.text.toString())
             writeSharedPreferences("lastName",editTextLastName.text.toString())
             writeSharedPreferences("email",editTextEmailAddress.text.toString())
-            // writeSharedPreferences("address",editTextAddress.text.toString())
-            //writeSharedPreferences("city",editTextCity.text.toString())
-            //writeSharedPreferences("zipcode",editTextZipcode.text.toString())
-            //writeSharedPreferences("barcode",editTextBarcode.text.toString())
+            writeSharedPreferences("address",editTextAddress.text.toString())
+            writeSharedPreferences("city",editTextCity.text.toString())
+            writeSharedPreferences("zipcode",editTextZipcode.text.toString())
+            writeSharedPreferences("barcode",editTextBarcode.text.toString())
         })
     }
 
