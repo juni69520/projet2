@@ -116,61 +116,61 @@ class FirstTabFragment : Fragment() {
             }
     }
 
-    private fun createBarcodeBitmap(
-        barcodeValue: String,
-        @ColorInt barcodeColor: Int,
-        @ColorInt backgroundColor: Int,
-        widthPixels: Int,
-        heightPixels: Int
-    ): Bitmap {
-        val bitMatrix = Code128Writer().encode(
-            barcodeValue,
-            BarcodeFormat.CODE_128,
-            widthPixels,
-            heightPixels
-        )
+    //private fun createBarcodeBitmap(
+    //   barcodeValue: String,
+    //    @ColorInt barcodeColor: Int,
+    //    @ColorInt backgroundColor: Int,
+    //    widthPixels: Int,
+    //    heightPixels: Int
+    //): Bitmap {
+    //   val bitMatrix = Code128Writer().encode(
+    //       barcodeValue,
+    //       BarcodeFormat.CODE_128,
+    //       widthPixels,
+    //       heightPixels
+    //    )
+//
+    //  val pixels = IntArray(bitMatrix.width * bitMatrix.height)
+    //  for (y in 0 until bitMatrix.height) {
+    //     val offset = y * bitMatrix.width
+    //      for (x in 0 until bitMatrix.width) {
+    //         pixels[offset + x] =
+    //              if (bitMatrix.get(x, y)) barcodeColor else backgroundColor
+    //      }
+//   }
 
-        val pixels = IntArray(bitMatrix.width * bitMatrix.height)
-        for (y in 0 until bitMatrix.height) {
-            val offset = y * bitMatrix.width
-            for (x in 0 until bitMatrix.width) {
-                pixels[offset + x] =
-                    if (bitMatrix.get(x, y)) barcodeColor else backgroundColor
-            }
-        }
+    //  val bitmap = Bitmap.createBitmap(
+    //     bitMatrix.width,
+    //      bitMatrix.height,
+    //     Bitmap.Config.ARGB_8888
+    // )
+    // bitmap.setPixels(
+    //     pixels,
+    //   0,
+    //     bitMatrix.width,
+    //   0,
+    //   0,
+    //   bitMatrix.width,
+    //   bitMatrix.height
+    //  )
+    //  return bitmap
+    //}
 
-        val bitmap = Bitmap.createBitmap(
-            bitMatrix.width,
-            bitMatrix.height,
-            Bitmap.Config.ARGB_8888
-        )
-        bitmap.setPixels(
-            pixels,
-            0,
-            bitMatrix.width,
-            0,
-            0,
-            bitMatrix.width,
-            bitMatrix.height
-        )
-        return bitmap
-    }
-
-    private fun displayBitmap(value: String) {
-        val widthPixels = resources.getDimensionPixelSize(R.dimen.width_barcode)
-        val heightPixels = resources.getDimensionPixelSize(R.dimen.height_barcode)
-        val image_barcode = view?.findViewById<EditText>(R.id.image_barcode)
-        val text_barcode_number = view?.findViewById<EditText>(R.id.text_barcode_number)
-
-        image_barcode.setImageBitmap(
-            createBarcodeBitmap(
-                barcodeValue = value,
-                barcodeColor = getColor(R.color.black),
-                backgroundColor = getColor(android.R.color.white),
-                widthPixels = widthPixels,
-                heightPixels = heightPixels
-            )
-        )
-        text_barcode_number?.text = value
-    }
+    //private fun displayBitmap(value: String) {
+    //   val widthPixels = resources.getDimensionPixelSize(R.dimen.width_barcode)
+    //   val heightPixels = resources.getDimensionPixelSize(R.dimen.height_barcode)
+    //   val image_barcode = view?.findViewById<EditText>(R.id.image_barcode)
+    //   val text_barcode_number = view?.findViewById<EditText>(R.id.text_barcode_number)
+//
+    //  image_barcode.setImageBitmap(
+    //       createBarcodeBitmap(
+    //        barcodeValue = value,
+    //         barcodeColor = getColor(R.color.black),
+    //        backgroundColor = getColor(android.R.color.white),
+    //         widthPixels = widthPixels,
+    //        heightPixels = heightPixels
+    //    )
+    //   )
+    //  text_barcode_number?.text = value
+    // }
 }
