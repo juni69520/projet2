@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,15 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import okhttp3.*
 import org.json.JSONObject
+import java.io.IOException
+import com.google.android.gms.maps.model.CameraPosition
+
+import com.google.android.gms.maps.model.PolylineOptions
+
+
+
 
 class MapsFragment : Fragment(){
     lateinit var googleMap :GoogleMap
@@ -73,13 +82,44 @@ class MapsFragment : Fragment(){
         val paris = LatLng(48.854885, 2.338646)
         googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         googleMap.addMarker(MarkerOptions().position(sydney).snippet("Pour toi François"))
-        val jsCities= JSONObject(cities)
-        val items=jsCities.getJSONArray("cities")
-        for (i in 0 until items.length()){
-            val city = items.getJSONObject(i)
-            val cityLatLng = LatLng(city.optDouble("lan",0.0),city.optDouble("lng",0.0))
-            googleMap.addMarker(MarkerOptions().position(cityLatLng).title(city.optString("city","")).snippet("Pour toi François"))
-        }
+
+
+        val okHttpClient: OkHttpClient = OkHttpClient.Builder().build()
+        val mRequestURL="https://djemam.com/epsi/stores.json"
+        val request = Request.Builder()
+            .url(mRequestURL)
+            .get()
+            .cacheControl(CacheControl.FORCE_NETWORK)
+            .build()
+        okHttpClient.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val data = response.body?.string()
+                val jsCities= JSONObject(data)
+
+                val items=jsCities.getJSONArray("stores")
+                for (i in 0 until items.length()){
+                    val city = items.getJSONObject(i)
+                    var cityLatLng = LatLng(city.optDouble("latitude",0.0),city.optDouble("longitude",0.0))
+
+                    if(city.optString("city") == "Pau"){
+                       cityLatLng = LatLng(city.optDouble("longitude",0.0),city.optDouble("latitude",0.0))
+                    }else if(city.optString("city") === "Nantes"){
+                        cityLatLng = LatLng(-1.5534, 47.2173)
+                    }
+
+                    val fullAddress =  city.optString("address","") + " - " + city.optString("zipcode","") + " " + city.optString("city","")
+                    runOnUiThread {
+                        googleMap.addMarker(MarkerOptions().position(cityLatLng).title(city.optString("city","")).snippet(fullAddress))
+                    }
+                }
+            }
+
+        })
+
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(paris))
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(paris,5.5f))
 
@@ -114,5 +154,11 @@ class MapsFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+    }
+
+    fun Fragment?.runOnUiThread(action: () -> Unit) {
+        this ?: return
+        if (!isAdded) return // Fragment not attached to an Activity
+        activity?.runOnUiThread(action)
     }
 }
