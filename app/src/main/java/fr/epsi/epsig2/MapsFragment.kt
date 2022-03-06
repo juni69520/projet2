@@ -21,6 +21,7 @@ import org.json.JSONObject
 import java.io.IOException
 
 class MapsFragment : Fragment(){
+    private val mMarkerMap: MutableMap<Marker, Store> = hashMapOf()
     lateinit var googleMap :GoogleMap
     @SuppressLint("MissingPermission", "UseRequireInsteadOfGet")
     val locationPermissionRequest = registerForActivityResult(
@@ -63,6 +64,8 @@ class MapsFragment : Fragment(){
             }
 
             override fun onResponse(call: Call, response: Response) {
+
+                val stores = arrayListOf<Store>()
                 val data = response.body?.string()
                 val jsCities= JSONObject(data)
 
@@ -77,13 +80,25 @@ class MapsFragment : Fragment(){
                         cityLatLng = LatLng(47.218371, -1.553621)
                     }
 
-                    val fullAddress =  city.optString("address","") + " - " + city.optString("zipcode","") + " " + city.optString("city","")
                     runOnUiThread {
-                        googleMap.addMarker(MarkerOptions().position(cityLatLng).title(city.optString("city","")).snippet(fullAddress))
+                        val fullAddress =  city.optString("address","") + " - " + city.optString("zipcode","") + " " + city.optString("city","");
+                        val marker = googleMap.addMarker(MarkerOptions().position(cityLatLng).title(city.optString("name","")).snippet(fullAddress));
+                        val storeName = city.optString("name");
+                        val storeAddress = city.optString("address");
+                        val storeZipcode =  city.optString("zipcode");
+                        val storeCity = city.optString("city");
+                        val storeImg = city.optString("pictureStore");
+                        val storeDesc = city.optString("description");
+
+                        val markerStore = Store(storeName, storeAddress, storeZipcode, storeCity, storeImg, storeDesc)
+                        stores.add(markerStore)
+
+                        if (marker != null) {
+                            mMarkerMap[marker] = markerStore
+                        };
                     }
                 }
             }
-
         })
 
         val paris = LatLng(48.854885, 2.338646)
@@ -94,21 +109,29 @@ class MapsFragment : Fragment(){
             (activity as BaseActivity).showToast(it.toString())
         }
 
-        googleMap.setOnInfoWindowClickListener {
-            (activity as BaseActivity).showToast(it.title.toString()+it.snippet.toString())
-
-            activity?.let{
-                val intent = Intent (it, StoreActivity::class.java)
-                it.startActivity(intent)
-            }
+        googleMap.setOnInfoWindowClickListener { p0 ->
+                activity?.let {
+                    val intent = Intent(it, StoreActivity::class.java)
+                    val markerInfo: Store? = mMarkerMap[p0]
+                    if (markerInfo != null) {
+                        intent.putExtra("storeName", markerInfo.storeName)
+                    };
+                    if (markerInfo != null) {
+                        intent.putExtra("storeAddress", markerInfo.storeAddress)
+                    };
+                    if (markerInfo != null) {
+                        intent.putExtra("storeZipCodeCity", markerInfo.storeZipcode+" - "+markerInfo.storeCity)
+                    };
+                    if (markerInfo != null) {
+                        intent.putExtra("storeImg", markerInfo.storeImg)
+                    };
+                    if (markerInfo != null) {
+                        intent.putExtra("storeDesc", markerInfo.storeDesc)
+                    };
+                    startActivity(intent);
+                    it.startActivity(intent)
+                }
         }
-
-        googleMap.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
-            override fun onMarkerClick(p0: Marker): Boolean {
-                (activity as BaseActivity).showToast("Markerrrrr"+p0.title.toString())
-                return false
-            }
-        })
         this.googleMap=googleMap
         locationPermissionRequest.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION))
 
