@@ -8,11 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.oned.Code128Writer
-import android.graphics.Bitmap
-import androidx.annotation.ColorInt
-import androidx.core.app.NotificationCompat.getColor
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,10 +16,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FirstTabFragment.newInstance] factory method to
+ * Use the [SecondTabFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FirstTabFragment : Fragment() {
+class FourthTabFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -42,18 +37,48 @@ class FirstTabFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first_tab, container, false)
+        return inflater.inflate(R.layout.fragment_fourth_tab, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val editTextFirstName = view.findViewById<EditText>(R.id.editTextFirstName)
+        val editTextLastName = view.findViewById<EditText>(R.id.editTextLastName)
+        val editTextEmailAddress = view.findViewById<EditText>(R.id.editTextEmailAddress)
+        val editTextAddress = view.findViewById<EditText>(R.id.editTextAddress)
+        val editTextCity = view.findViewById<EditText>(R.id.editTextCity)
+        val editTextZipcode = view.findViewById<EditText>(R.id.editTextZipcode)
         val editTextBarcode = view.findViewById<EditText>(R.id.editTextBarcode)
         val buttonSave = view.findViewById<Button>(R.id.buttonSave)
 
+        editTextFirstName.setText(readSharedPreferences("firstName"))
+        editTextLastName.setText(readSharedPreferences("lastName"))
+        editTextEmailAddress.setText(readSharedPreferences("email"))
+        editTextAddress.setText(readSharedPreferences("address"))
+        editTextCity.setText(readSharedPreferences("city"))
+        editTextZipcode.setText(readSharedPreferences("zipcode"))
         editTextBarcode.setText(readSharedPreferences("barcode"))
 
         //displayBitmap("123456789")
+
+        buttonSave.setOnClickListener(View.OnClickListener {
+            writeSharedPreferences("firstName",editTextFirstName.text.toString())
+            writeSharedPreferences("lastName",editTextLastName.text.toString())
+            writeSharedPreferences("email",editTextEmailAddress.text.toString())
+            writeSharedPreferences("address",editTextAddress.text.toString())
+            writeSharedPreferences("city",editTextCity.text.toString())
+            writeSharedPreferences("zipcode",editTextZipcode.text.toString())
+            writeSharedPreferences("barcode",editTextBarcode.text.toString())
+        })
+    }
+
+    fun writeSharedPreferences(key : String , value : String){
+        activity?.let{
+            val sharedPreferences= it.getSharedPreferences("epsi", Context.MODE_PRIVATE)
+            val edit=sharedPreferences.edit()
+            edit.putString(key,value)
+            edit.apply()
+        }
     }
 
     fun readSharedPreferences(key : String) : String{

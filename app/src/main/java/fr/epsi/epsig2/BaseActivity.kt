@@ -18,7 +18,7 @@ open class BaseActivity : AppCompatActivity() {
         })
     }
 
-    fun setHeaderTitle(txt : String){
+    open fun setHeaderTitle(txt : String){
         val textViewTitle = findViewById<TextView>(R.id.textViewTitle)
         textViewTitle.text = txt
     }

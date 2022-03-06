@@ -7,6 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:orientation="vertical"
         android:background="@android:color/holo_red_light">
 
         <ImageView
@@ -26,5 +27,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"/>
+        <ImageView
+            android:id="@+id/imageViewProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/icon_profile"/>
     </RelativeLayout>
 </LinearLayout>
