@@ -23,7 +23,7 @@ class FragmentActivity : BaseActivity() {
 
 
         textViewTab2.setOnClickListener( View.OnClickListener {
-            showTab2()
+            showOffersTab()
         })
 
         textViewTab3.setOnClickListener( View.OnClickListener {
@@ -45,7 +45,7 @@ class FragmentActivity : BaseActivity() {
         transaction.commit()
     }
 
-    private fun showTab2() {
+    private fun showOffersTab() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.contentLayout, OffersTabFragment::class.java, null)
         transaction.setReorderingAllowed(true)
