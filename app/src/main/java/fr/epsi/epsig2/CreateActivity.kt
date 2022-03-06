@@ -19,7 +19,7 @@ class CreateActivity : BaseActivity() {
         val editTextCity = findViewById<EditText>(R.id.editTextCity)
         val editTextZipcode = findViewById<EditText>(R.id.editTextZipcode)
         val editTextBarcode = findViewById<EditText>(R.id.editTextBarcode)
-g
+
         if(readSharedPreferences("firstName") != "Not found"){
             editTextFirstName.setText(readSharedPreferences("firstName"))
             editTextLastName.setText(readSharedPreferences("lastName"))
