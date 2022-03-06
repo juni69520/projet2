@@ -2,6 +2,7 @@ package fr.epsi.epsig2
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -95,12 +96,15 @@ class MapsFragment : Fragment(){
 
         googleMap.setOnInfoWindowClickListener {
             (activity as BaseActivity).showToast(it.title.toString())
+            activity?.let{
+                val intent = Intent (it, StoreActivity::class.java)
+                it.startActivity(intent)
+            }
         }
 
         googleMap.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
             override fun onMarkerClick(p0: Marker): Boolean {
                 (activity as BaseActivity).showToast("Markerrrrr"+p0.title.toString())
-
                 return false
             }
         })

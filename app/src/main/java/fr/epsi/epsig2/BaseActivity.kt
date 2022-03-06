@@ -60,5 +60,4 @@ open class BaseActivity : AppCompatActivity() {
         edit.putString(key,value)
         edit.apply()
     }
-
 }

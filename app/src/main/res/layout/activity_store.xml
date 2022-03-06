@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StoreActivity">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layoutHeader"
+        android:background="@android:color/holo_red_light"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:id="@+id/StoreName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="60dp">
+
+        <ImageView
+            android:id="@+id/pictureStore"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/StoreAddres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/StoreZipCodeCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/StoreDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
