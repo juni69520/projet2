@@ -1,5 +1,6 @@
 package fr.epsi.epsig2
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -40,6 +41,19 @@ open class BaseActivity : AppCompatActivity() {
 
     fun showToast(txt : String){
         Toast.makeText(this,txt, Toast.LENGTH_SHORT).show()
+    }
+
+    fun readSharedPreferences(key : String) : String{
+        val sharedPreferences = getSharedPreferences("epsi", Context.MODE_PRIVATE)
+        val txt = sharedPreferences.getString(key, "Not found")
+        return txt.toString()
+    }
+
+    fun writeSharedPreferences(key : String , value : String){
+        val sharedPreferences= getSharedPreferences("epsi", Context.MODE_PRIVATE)
+        val edit=sharedPreferences.edit()
+        edit.putString(key,value)
+        edit.apply()
     }
 
 }

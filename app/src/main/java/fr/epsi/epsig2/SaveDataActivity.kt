@@ -25,17 +25,4 @@ class SaveDataActivity : BaseActivity() {
             writeSharedPreferences("email",editTextEmailAddress.text.toString())
         })
     }
-
-    fun writeSharedPreferences(key : String , value : String){
-        val sharedPreferences= getSharedPreferences("epsi",Context.MODE_PRIVATE)
-        val edit=sharedPreferences.edit()
-        edit.putString(key,value)
-        edit.apply()
-    }
-
-    fun readSharedPreferences(key : String) : String{
-        val sharedPreferences= getSharedPreferences("epsi",Context.MODE_PRIVATE)
-        val txt=sharedPreferences.getString(key,"Not found")
-        return txt.toString()
-    }
 }

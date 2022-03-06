@@ -23,6 +23,14 @@ class CreateActivity : BaseActivity() {
         val editTextZipcode = findViewById<EditText>(R.id.editTextZipcode)
         val editTextBarcode = findViewById<EditText>(R.id.editTextBarcode)
 
+        editTextFirstName.setText(readSharedPreferences("firstName"))
+        editTextLastName.setText(readSharedPreferences("lastName"))
+        editTextEmailAddress.setText(readSharedPreferences("email"))
+        editTextAddress.setText(readSharedPreferences("address"))
+        editTextCity.setText(readSharedPreferences("city"))
+        editTextZipcode.setText(readSharedPreferences("zipcode"))
+        editTextBarcode.setText(readSharedPreferences("barcode"))
+
 
         buttonSave.setOnClickListener(View.OnClickListener {
             writeSharedPreferences("firstName",editTextFirstName.text.toString())
@@ -37,13 +45,4 @@ class CreateActivity : BaseActivity() {
             startActivity(newIntent)
         })
     }
-
-    fun writeSharedPreferences(key : String , value : String){
-        val sharedPreferences= getSharedPreferences("epsi", Context.MODE_PRIVATE)
-        val edit=sharedPreferences.edit()
-        edit.putString(key,value)
-        edit.apply()
-    }
-
-
 }

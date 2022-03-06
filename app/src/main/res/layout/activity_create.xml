@@ -18,43 +18,50 @@ tools:context=".LoginActivity">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
+
             <EditText
                 android:id="@+id/editTextLastName"
                 style="@style/EditTextEpsi"
                 android:ems="10"
                 android:hint="Nom"
                 android:inputType="none" />
+
             <EditText
                 android:id="@+id/editTextFirstName"
                 style="@style/EditTextEpsi"
                 android:ems="10"
                 android:hint="Prénom"
                 android:inputType="none" />
+
             <EditText
                 android:id="@+id/editTextEmailAddress"
                 style="@style/EditTextEpsi"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress" />
+
             <EditText
                 android:id="@+id/editTextAddress"
                 style="@style/EditTextEpsi"
                 android:ems="10"
                 android:hint="Adresse"
                 android:inputType="none" />
+
             <EditText
                 android:id="@+id/editTextCity"
                 style="@style/EditTextEpsi"
                 android:ems="10"
                 android:hint="Ville"
                 android:inputType="none" />
+
             <EditText
                 android:id="@+id/editTextZipcode"
                 style="@style/EditTextEpsi"
                 android:ems="10"
                 android:hint="Code postal"
                 android:inputType="none" />
+
             <EditText
                 android:id="@+id/editTextBarcode"
                 style="@style/EditTextEpsi"
@@ -64,9 +71,9 @@ tools:context=".LoginActivity">
 
             <Button
                 android:id="@+id/buttonLogin"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:text="Sauvegarder" />
         </LinearLayout>
     </ScrollView>

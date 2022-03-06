@@ -4,6 +4,7 @@
     <string name="txt_home_nature">Nature</string>
     <string name="txt_home_space">Espace</string>
     <string name="txt_home_login">Login</string>
+    <string name="txt_home_qr">Scan QR Code</string>
     <string name="txt_home_create">Create</string>
     <string name="txt_home_student">Students</string>
     <string name="txt_home_student_online">Students Online</string>

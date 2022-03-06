@@ -23,7 +23,7 @@ class MainActivity : BaseActivity() {
             showToast("rien")
         }
 
-        val buttonLogin:Button = findViewById(R.id.buttonLogin)
+        val buttonLogin:Button = findViewById(R.id.buttonQR)
         val buttonCreate:Button = findViewById(R.id.buttonCreate)
         val buttonFragment:Button = findViewById(R.id.buttonFragment)
 
