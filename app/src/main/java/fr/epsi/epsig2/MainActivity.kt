@@ -13,16 +13,16 @@ class MainActivity : BaseActivity() {
 
         val sharedPreferences= getSharedPreferences("epsi", Context.MODE_PRIVATE)
         val firstName = sharedPreferences.getString("firstName","Not found")
-        if (firstName != null && firstName != "Not found") {
-            val newIntent= Intent(application,FragmentActivity::class.java)
-            startActivity(newIntent)
-        }
+        //if (firstName != null && firstName != "Not found") {
+        //    val newIntent= Intent(application,FragmentActivity::class.java)
+        //   startActivity(newIntent)
+        //}
 
-        val buttonLogin:Button = findViewById(R.id.buttonQR)
+        val buttonQR:Button = findViewById(R.id.buttonQR)
         val buttonCreate:Button = findViewById(R.id.buttonCreate)
 
 
-        buttonLogin.setOnClickListener(View.OnClickListener {
+        buttonQR.setOnClickListener(View.OnClickListener {
             val newIntent= Intent(application,QrActivity::class.java)
             startActivity(newIntent)
         })

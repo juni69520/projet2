@@ -95,7 +95,8 @@ class MapsFragment : Fragment(){
         }
 
         googleMap.setOnInfoWindowClickListener {
-            (activity as BaseActivity).showToast(it.title.toString())
+            (activity as BaseActivity).showToast(it.title.toString()+it.snippet.toString())
+
             activity?.let{
                 val intent = Intent (it, StoreActivity::class.java)
                 it.startActivity(intent)
