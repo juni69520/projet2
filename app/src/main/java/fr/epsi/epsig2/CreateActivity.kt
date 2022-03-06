@@ -39,7 +39,7 @@ class CreateActivity : BaseActivity() {
             writeSharedPreferences("zipcode",editTextZipcode.text.toString())
             writeSharedPreferences("barcode",editTextBarcode.text.toString())
 
-            val newIntent= Intent(application,TestFragmentActivity::class.java)
+            val newIntent= Intent(application,FragmentActivity::class.java)
             startActivity(newIntent)
         })
     }

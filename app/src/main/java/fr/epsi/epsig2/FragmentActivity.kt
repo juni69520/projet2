@@ -5,10 +5,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 
-class TestFragmentActivity : BaseActivity() {
+class FragmentActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test_fragment)
+        setContentView(R.layout.activity_layout_fragment)
 
         val textViewTab1 = findViewById<TextView>(R.id.textViewTab1)
         val textViewTab2 = findViewById<TextView>(R.id.textViewTab2)
@@ -18,7 +18,7 @@ class TestFragmentActivity : BaseActivity() {
         setProfileLogo()
 
         textViewTab1.setOnClickListener( View.OnClickListener {
-            showTab1()
+            showBarcodeTab()
         })
 
 
@@ -27,19 +27,19 @@ class TestFragmentActivity : BaseActivity() {
         })
 
         textViewTab3.setOnClickListener( View.OnClickListener {
-            showTab3()
+            showMapsFragmentTab()
         })
 
         imageViewProfile.setOnClickListener( View.OnClickListener {
-            showTab4()
+            showProfileTab()
         })
 
-        showTab1()
+        showBarcodeTab()
     }
 
-    private fun showTab1() {
+    private fun showBarcodeTab() {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.contentLayout, FirstTabFragment::class.java, null)
+        transaction.replace(R.id.contentLayout, BarcodeTabFragment::class.java, null)
         transaction.setReorderingAllowed(true)
         transaction.addToBackStack("fF") // name can be null
         transaction.commit()
@@ -47,13 +47,13 @@ class TestFragmentActivity : BaseActivity() {
 
     private fun showTab2() {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.contentLayout, SecondTabFragment::class.java, null)
+        transaction.replace(R.id.contentLayout, OffersTabFragment::class.java, null)
         transaction.setReorderingAllowed(true)
         transaction.addToBackStack("sF") // name can be null
         transaction.commit()
     }
 
-    private fun showTab3() {
+    private fun showMapsFragmentTab() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.contentLayout, MapsFragment::class.java, null)
         transaction.setReorderingAllowed(true)
@@ -61,9 +61,9 @@ class TestFragmentActivity : BaseActivity() {
         transaction.commit()
     }
 
-    private fun showTab4() {
+    private fun showProfileTab() {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.contentLayout, FourthTabFragment::class.java, null)
+        transaction.replace(R.id.contentLayout, ProfileTabFragment::class.java, null)
         transaction.setReorderingAllowed(true)
         transaction.addToBackStack("aB") // name can be null
         transaction.commit()

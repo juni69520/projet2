@@ -35,16 +35,10 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".TestFragmentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SaveDataActivity"
+            android:name=".FragmentActivity"
             android:exported="false" />
         <activity
             android:name=".CreateActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
@@ -55,10 +49,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DetailActivity"
-            android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />

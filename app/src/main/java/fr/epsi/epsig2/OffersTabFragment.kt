@@ -17,11 +17,11 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [SecondTabFragment] subclass.
- * Use the [SecondTabFragment.newInstance] factory method to
+ * A simple [OffersTabFragment] subclass.
+ * Use the [OffersTabFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SecondTabFragment : Fragment() {
+class OffersTabFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -39,7 +39,7 @@ class SecondTabFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second_tab, container, false)
+        return inflater.inflate(R.layout.fragment_offers_tab, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -96,7 +96,7 @@ class SecondTabFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SecondTabFragment().apply {
+            OffersTabFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

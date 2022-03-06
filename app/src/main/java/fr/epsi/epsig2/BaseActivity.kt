@@ -24,7 +24,7 @@ open class BaseActivity : AppCompatActivity() {
         val profile = findViewById<ImageView>(R.id.imageViewProfile)
         profile.visibility = View.VISIBLE
         profile.setOnClickListener(View.OnClickListener {
-            val newIntent = Intent(application,FourthTabFragment::class.java)
+            val newIntent = Intent(application,ProfileTabFragment::class.java)
             startActivity(newIntent)
         })
     }

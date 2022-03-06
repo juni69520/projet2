@@ -100,6 +100,7 @@ class MapsFragment : Fragment(){
         googleMap.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
             override fun onMarkerClick(p0: Marker): Boolean {
                 (activity as BaseActivity).showToast("Markerrrrr"+p0.title.toString())
+
                 return false
             }
         })

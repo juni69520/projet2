@@ -14,7 +14,7 @@ class MainActivity : BaseActivity() {
         val sharedPreferences= getSharedPreferences("epsi", Context.MODE_PRIVATE)
         val firstName = sharedPreferences.getString("firstName","Not found")
         if (firstName != null && firstName != "Not found") {
-            val newIntent= Intent(application,TestFragmentActivity::class.java)
+            val newIntent= Intent(application,FragmentActivity::class.java)
             startActivity(newIntent)
         }
 
