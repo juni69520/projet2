@@ -12,7 +12,6 @@ class CreateActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
         showBtnBack()
-        setHeaderTitle("Create")
 
         val buttonSave = findViewById<Button>(R.id.buttonLogin)
         val editTextFirstName = findViewById<EditText>(R.id.editTextFirstName)

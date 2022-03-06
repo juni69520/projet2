@@ -22,7 +22,6 @@ class MainActivity : BaseActivity() {
 
         val buttonLogin:Button = findViewById(R.id.buttonQR)
         val buttonCreate:Button = findViewById(R.id.buttonCreate)
-        val buttonFragment:Button = findViewById(R.id.buttonFragment)
 
 
         buttonLogin.setOnClickListener(View.OnClickListener {
@@ -32,11 +31,6 @@ class MainActivity : BaseActivity() {
 
         buttonCreate.setOnClickListener(View.OnClickListener {
             val newIntent= Intent(application,CreateActivity::class.java)
-            startActivity(newIntent)
-        })
-
-        buttonFragment.setOnClickListener(View.OnClickListener {
-            val newIntent= Intent(application,TestFragmentActivity::class.java)
             startActivity(newIntent)
         })
     }

@@ -19,7 +19,7 @@ class TestFragmentActivity : BaseActivity() {
 
     val firstTabFragment=FirstTabFragment()
     val secondTabFragment=SecondTabFragment()
-    val thirdTabFragment=ThirdTabFragment()
+    val thirdTabFragment=MapsFragment()
     val fourthTabFragment=FourthTabFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {

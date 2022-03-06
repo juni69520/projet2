@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,6 +73,8 @@ class FourthTabFragment : Fragment() {
             writeSharedPreferences("city",editTextCity.text.toString())
             writeSharedPreferences("zipcode",editTextZipcode.text.toString())
             writeSharedPreferences("barcode",editTextBarcode.text.toString())
+
+            showTab1()
         })
     }
 
@@ -90,6 +94,14 @@ class FourthTabFragment : Fragment() {
             return txt.toString()
         }
         return "Not found"
+    }
+
+    private fun showTab1() {
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(fr.epsi.epsig2.R.id.contentLayout, FirstTabFragment::class.java, null)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
     companion object {

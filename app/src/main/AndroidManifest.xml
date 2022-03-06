@@ -41,19 +41,10 @@
             android:name=".SaveDataActivity"
             android:exported="false" />
         <activity
-            android:name=".StudentsOnlineActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StudentsActivity"
-            android:exported="false" />
-        <activity
             android:name=".CreateActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

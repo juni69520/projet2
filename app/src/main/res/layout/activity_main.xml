@@ -23,28 +23,16 @@
             android:orientation="vertical" >
             <Button
                 android:id="@+id/buttonQR"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/txt_home_qr" />
             <Button
                 android:id="@+id/buttonCreate"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/txt_home_create" />
-            <Button
-                android:id="@+id/buttonSaveData"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/txt_home_save_data" />
-            <Button
-                android:id="@+id/buttonFragment"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/txt_home_fragment" />
         </LinearLayout>
 
     </ScrollView>
