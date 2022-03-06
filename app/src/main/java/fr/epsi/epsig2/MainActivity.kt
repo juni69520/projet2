@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
-import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,17 +13,17 @@ class MainActivity : BaseActivity() {
 
         val sharedPreferences= getSharedPreferences("epsi", Context.MODE_PRIVATE)
         val firstName = sharedPreferences.getString("firstName","Not found")
-        if (firstName != null && firstName != "Not found") {
-            val newIntent= Intent(application,TestFragmentActivity::class.java)
-            startActivity(newIntent)
-        }
+        //if (firstName != null && firstName != "Not found") {
+        //    val newIntent= Intent(application,TestFragmentActivity::class.java)
+        //    startActivity(newIntent)
+        //}
 
         val buttonLogin:Button = findViewById(R.id.buttonQR)
         val buttonCreate:Button = findViewById(R.id.buttonCreate)
 
 
         buttonLogin.setOnClickListener(View.OnClickListener {
-            val newIntent= Intent(application,LoginActivity::class.java)
+            val newIntent= Intent(application,QrActivity::class.java)
             startActivity(newIntent)
         })
 

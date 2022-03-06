@@ -1,6 +1,5 @@
 package fr.epsi.epsig2
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,7 +10,6 @@ class CreateActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
-        showBtnBack()
 
         val buttonSave = findViewById<Button>(R.id.buttonLogin)
         val editTextFirstName = findViewById<EditText>(R.id.editTextFirstName)
@@ -21,7 +19,7 @@ class CreateActivity : BaseActivity() {
         val editTextCity = findViewById<EditText>(R.id.editTextCity)
         val editTextZipcode = findViewById<EditText>(R.id.editTextZipcode)
         val editTextBarcode = findViewById<EditText>(R.id.editTextBarcode)
-
+g
         if(readSharedPreferences("firstName") != "Not found"){
             editTextFirstName.setText(readSharedPreferences("firstName"))
             editTextLastName.setText(readSharedPreferences("lastName"))

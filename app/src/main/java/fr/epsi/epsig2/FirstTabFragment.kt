@@ -6,20 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.oned.Code128Writer
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
-import androidx.core.app.NotificationCompat.getColor
 import androidx.core.content.res.ResourcesCompat
-import com.google.zxing.common.BitMatrix
-import com.google.zxing.MultiFormatWriter
-import com.google.zxing.WriterException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

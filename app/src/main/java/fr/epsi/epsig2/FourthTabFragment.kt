@@ -54,6 +54,7 @@ class FourthTabFragment : Fragment() {
         val editTextZipcode = view.findViewById<EditText>(R.id.editTextZipcode)
         val editTextBarcode = view.findViewById<EditText>(R.id.editTextBarcode)
         val buttonSave = view.findViewById<Button>(R.id.buttonSave)
+        val buttonReturn = view.findViewById<Button>(R.id.buttonReturn)
 
         editTextFirstName.setText(readSharedPreferences("firstName"))
         editTextLastName.setText(readSharedPreferences("lastName"))
@@ -74,6 +75,10 @@ class FourthTabFragment : Fragment() {
             writeSharedPreferences("zipcode",editTextZipcode.text.toString())
             writeSharedPreferences("barcode",editTextBarcode.text.toString())
 
+            showTab1()
+        })
+
+        buttonReturn.setOnClickListener(View.OnClickListener {
             showTab1()
         })
     }

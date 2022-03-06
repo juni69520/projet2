@@ -7,13 +7,12 @@ import com.google.zxing.integration.android.IntentIntegrator
 import org.json.JSONException
 import org.json.JSONObject
 
-class LoginActivity : BaseActivity() {
+class QrActivity : BaseActivity() {
     private var qrScan: IntentIntegrator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
-        showBtnBack()
 
         //Initialize the Scan Object
         qrScan = IntentIntegrator(this)
