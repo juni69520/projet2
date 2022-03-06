@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/layoutHeader"
         android:background="@android:color/holo_red_light"
         android:layout_width="match_parent"
@@ -14,9 +14,9 @@
             android:id="@+id/imageViewBack"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:visibility="gone"
-            android:src="@drawable/icon_back" />
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/icon_back"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -26,12 +26,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"/>
+
         <ImageView
             android:id="@+id/imageViewProfile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:visibility="gone"
-            android:src="@drawable/icon_profile"/>
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_profile"
+            android:visibility="gone"/>
     </RelativeLayout>
 </LinearLayout>

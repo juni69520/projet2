@@ -32,7 +32,7 @@ class TestFragmentActivity : BaseActivity() {
         val imageViewProfile = findViewById<ImageView>(R.id.imageViewProfile)
 
         showBtnBack()
-        //setProfileLogo()
+        setProfileLogo()
 
         textViewTab1.setOnClickListener( View.OnClickListener {
             showTab1()
