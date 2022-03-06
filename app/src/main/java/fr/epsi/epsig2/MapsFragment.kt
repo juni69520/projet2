@@ -2,19 +2,12 @@ package fr.epsi.epsig2
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.pm.PackageManager
-import android.os.Build
 import androidx.fragment.app.Fragment
-
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,12 +18,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
-import com.google.android.gms.maps.model.CameraPosition
-
-import com.google.android.gms.maps.model.PolylineOptions
-
-
-
 
 class MapsFragment : Fragment(){
     lateinit var googleMap :GoogleMap
@@ -52,22 +39,6 @@ class MapsFragment : Fragment(){
         }
     }
 
-    val cities = "{\"cities\":[{\"city\":\"Bordeaux\",\"lan\":44.847807,\"lng\":-0.579472},\n" +
-            "{\"city\":\"Pau\",\"lan\":43.293295,\"lng\":-0.363570},\n" +
-            "{\"city\":\"Nantes\",\"lan\":47.215585,\"lng\":-1.554908},\n" +
-            "{\"city\":\"Paris\",\"lan\":48.854885,\"lng\":2.338646},\n" +
-            "{\"city\":\"Lille\",\"lan\":50.608719,\"lng\":3.063295},\n" +
-            "{\"city\":\"Marseille\",\"lan\":43.293551,\"lng\":5.377397},\n" +
-            "{\"city\":\"Nice\",\"lan\":43.701680,\"lng\":7.260711},\n" +
-            "{\"city\":\"Lyon\",\"lan\":45.759132,\"lng\":4.834604},\n" +
-            "{\"city\":\"Montpellier\",\"lan\":43.586120,\"lng\":3.896094},\n" +
-            "{\"city\":\"Toulouse\",\"lan\":43.533513,\"lng\":1.411209},\n" +
-            "{\"city\":\"Brest\",\"lan\":48.389353,\"lng\":-4.488616},\n" +
-            "{\"city\":\"Limoges\",\"lan\":45.838771,\"lng\":1.262108},\n" +
-            "{\"city\":\"Clermont-Ferrand\",\"lan\":45.780535,\"lng\":3.093242},\n" +
-            "{\"city\":\"Tours\",\"lan\":47.404355,\"lng\":0.688930},\n" +
-            "{\"city\":\"Strasbourg\",\"lan\":48.540395,\"lng\":7.727753}]}"
-
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.
@@ -78,12 +49,6 @@ class MapsFragment : Fragment(){
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-        val sydney = LatLng(-34.0, 151.0)
-        val paris = LatLng(48.854885, 2.338646)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.addMarker(MarkerOptions().position(sydney).snippet("Pour toi François"))
-
-
         val okHttpClient: OkHttpClient = OkHttpClient.Builder().build()
         val mRequestURL="https://djemam.com/epsi/stores.json"
         val request = Request.Builder()
@@ -107,8 +72,8 @@ class MapsFragment : Fragment(){
 
                     if(city.optString("city") == "Pau"){
                        cityLatLng = LatLng(city.optDouble("longitude",0.0),city.optDouble("latitude",0.0))
-                    }else if(city.optString("city") === "Nantes"){
-                        cityLatLng = LatLng(-1.5534, 47.2173)
+                    }else if(city.optString("city") == "Nantes"){
+                        cityLatLng = LatLng(47.218371, -1.553621)
                     }
 
                     val fullAddress =  city.optString("address","") + " - " + city.optString("zipcode","") + " " + city.optString("city","")
@@ -120,6 +85,7 @@ class MapsFragment : Fragment(){
 
         })
 
+        val paris = LatLng(48.854885, 2.338646)
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(paris))
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(paris,5.5f))
 
