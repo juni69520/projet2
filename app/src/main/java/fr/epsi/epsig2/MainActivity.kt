@@ -15,13 +15,10 @@ class MainActivity : BaseActivity() {
 
         val sharedPreferences= getSharedPreferences("epsi", Context.MODE_PRIVATE)
         val firstName = sharedPreferences.getString("firstName","Not found")
-        if (firstName != null && firstName != "Not found") {
-          showToast(firstName)
+        //if (firstName != null && firstName != "Not found") {
             //val newIntent= Intent(application,TestFragmentActivity::class.java)
-          //startActivity(newIntent)
-        }else{
-            showToast("rien")
-        }
+        //startActivity(newIntent)
+        //}
 
         val buttonLogin:Button = findViewById(R.id.buttonQR)
         val buttonCreate:Button = findViewById(R.id.buttonCreate)

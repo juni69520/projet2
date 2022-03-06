@@ -30,7 +30,9 @@ class TestFragmentActivity : BaseActivity() {
         val textViewTab2 = findViewById<TextView>(R.id.textViewTab2)
         val textViewTab3 = findViewById<TextView>(R.id.textViewTab3)
         val imageViewProfile = findViewById<ImageView>(R.id.imageViewProfile)
-        imageViewProfile.visibility=View.VISIBLE
+
+        showBtnBack()
+        //setProfileLogo()
 
         textViewTab1.setOnClickListener( View.OnClickListener {
             showTab1()
@@ -62,7 +64,7 @@ class TestFragmentActivity : BaseActivity() {
 
     private fun showTab2() {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.contentLayout, MapsFragment::class.java, null)
+        transaction.replace(R.id.contentLayout, SecondTabFragment::class.java, null)
         transaction.setReorderingAllowed(true)
         transaction.addToBackStack("sF") // name can be null
         transaction.commit()

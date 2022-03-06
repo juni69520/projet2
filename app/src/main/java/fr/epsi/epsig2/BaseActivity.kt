@@ -1,6 +1,7 @@
 package fr.epsi.epsig2
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,6 +17,15 @@ open class BaseActivity : AppCompatActivity() {
         imageViewBack.visibility=View.VISIBLE
         imageViewBack.setOnClickListener(View.OnClickListener {
             finish()
+        })
+    }
+
+    fun setProfileLogo(){
+        val profile = findViewById<ImageView>(R.id.imageViewProfile)
+        profile.visibility = View.VISIBLE
+        profile.setOnClickListener(View.OnClickListener {
+            val newIntent = Intent(application,FourthTabFragment::class.java)
+            startActivity(newIntent)
         })
     }
 

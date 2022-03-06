@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
     <RelativeLayout
+        android:id="@+id/layoutHeader"
+        android:background="@android:color/holo_red_light"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="vertical"
-        android:background="@android:color/holo_red_light">
+        android:layout_height="60dp">
 
         <ImageView
             android:id="@+id/imageViewBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:visibility="gone"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            app:srcCompat="@drawable/icon_back" />
+            android:visibility="gone"
+            android:src="@drawable/icon_back" />
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -29,10 +28,10 @@
             android:layout_centerInParent="true"/>
         <ImageView
             android:id="@+id/imageViewProfile"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
             android:visibility="gone"
-            android:layout_gravity="right"
-            app:srcCompat="@drawable/icon_profile"/>
+            android:src="@drawable/icon_profile"/>
     </RelativeLayout>
 </LinearLayout>

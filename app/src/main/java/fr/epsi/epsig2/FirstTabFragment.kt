@@ -11,8 +11,15 @@ import android.widget.EditText
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.oned.Code128Writer
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.core.app.NotificationCompat.getColor
+import androidx.core.content.res.ResourcesCompat
+import com.google.zxing.common.BitMatrix
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.WriterException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,12 +55,12 @@ class FirstTabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val editTextBarcode = view.findViewById<EditText>(R.id.editTextBarcode)
-        val buttonSave = view.findViewById<Button>(R.id.buttonSave)
+        val editLastName = view.findViewById<TextView>(R.id.textViewLastName)
+        val editFirstName = view.findViewById<TextView>(R.id.textViewNickName)
 
-        editTextBarcode.setText(readSharedPreferences("barcode"))
-
-        //displayBitmap("123456789")
+        editLastName.text = readSharedPreferences("lastName")
+        editFirstName.text = readSharedPreferences("firstName")
+        displayBitmap(readSharedPreferences("barcode").toString())
     }
 
     fun readSharedPreferences(key : String) : String{
@@ -83,5 +90,65 @@ class FirstTabFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun displayBitmap(value: String) {
+        val widthPixels = resources.getDimensionPixelSize(R.dimen.width_barcode)
+        val heightPixels = resources.getDimensionPixelSize(R.dimen.height_barcode)
+        val imageBarcode = view?.findViewById<ImageView>(R.id.image_barcode)
+        val textBarcodeNumber = view?.findViewById<TextView>(R.id.textViewBarcode)
+
+        imageBarcode?.setImageBitmap(
+            createBarcodeBitmap(
+                barcodeValue = value,
+                barcodeColor = ResourcesCompat.getColor(resources,R.color.black,null),
+                backgroundColor = ResourcesCompat.getColor(resources,R.color.white,null),
+                widthPixels = widthPixels,
+                heightPixels = heightPixels
+            )
+        )
+        if (textBarcodeNumber != null) {
+            textBarcodeNumber.text = value
+        }
+    }
+
+    private fun createBarcodeBitmap(
+        barcodeValue: String,
+        @ColorInt barcodeColor: Int,
+        @ColorInt backgroundColor: Int,
+        widthPixels: Int,
+        heightPixels: Int
+    ): Bitmap {
+        val bitMatrix = Code128Writer().encode(
+            barcodeValue,
+            BarcodeFormat.CODE_128,
+            widthPixels,
+            heightPixels
+        )
+
+        val pixels = IntArray(bitMatrix.width * bitMatrix.height)
+        for (y in 0 until bitMatrix.height) {
+            val offset = y * bitMatrix.width
+            for (x in 0 until bitMatrix.width) {
+                pixels[offset + x] =
+                    if (bitMatrix.get(x, y)) barcodeColor else backgroundColor
+            }
+        }
+
+        val bitmap = Bitmap.createBitmap(
+            bitMatrix.width,
+            bitMatrix.height,
+            Bitmap.Config.ARGB_8888
+        )
+        bitmap.setPixels(
+            pixels,
+            0,
+            bitMatrix.width,
+            0,
+            0,
+            bitMatrix.width,
+            bitMatrix.height
+        )
+        return bitmap
     }
 }

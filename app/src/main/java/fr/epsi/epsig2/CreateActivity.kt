@@ -23,14 +23,15 @@ class CreateActivity : BaseActivity() {
         val editTextZipcode = findViewById<EditText>(R.id.editTextZipcode)
         val editTextBarcode = findViewById<EditText>(R.id.editTextBarcode)
 
-        editTextFirstName.setText(readSharedPreferences("firstName"))
-        editTextLastName.setText(readSharedPreferences("lastName"))
-        editTextEmailAddress.setText(readSharedPreferences("email"))
-        editTextAddress.setText(readSharedPreferences("address"))
-        editTextCity.setText(readSharedPreferences("city"))
-        editTextZipcode.setText(readSharedPreferences("zipcode"))
-        editTextBarcode.setText(readSharedPreferences("barcode"))
-
+        if(readSharedPreferences("firstName") != "Not found"){
+            editTextFirstName.setText(readSharedPreferences("firstName"))
+            editTextLastName.setText(readSharedPreferences("lastName"))
+            editTextEmailAddress.setText(readSharedPreferences("email"))
+            editTextAddress.setText(readSharedPreferences("address"))
+            editTextCity.setText(readSharedPreferences("city"))
+            editTextZipcode.setText(readSharedPreferences("zipcode"))
+            editTextBarcode.setText(readSharedPreferences("barcode"))
+        }
 
         buttonSave.setOnClickListener(View.OnClickListener {
             writeSharedPreferences("firstName",editTextFirstName.text.toString())
