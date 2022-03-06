@@ -17,15 +17,12 @@
             android:layout_alignParentLeft="true"
             android:src="@drawable/icon_back"
             android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:text="Supermarché"
-            android:textColor="@color/white"
-            android:textSize="30sp"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_logo" />
 
         <ImageView
             android:id="@+id/imageViewProfile"

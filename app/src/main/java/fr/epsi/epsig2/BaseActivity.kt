@@ -29,11 +29,6 @@ open class BaseActivity : AppCompatActivity() {
         })
     }
 
-    open fun setHeaderTitle(txt : String){
-        val textViewTitle = findViewById<TextView>(R.id.textViewTitle)
-        textViewTitle.text = txt
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("Epsi","################ onCreate ##############"+javaClass.simpleName)

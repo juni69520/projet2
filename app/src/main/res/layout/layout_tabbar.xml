@@ -9,7 +9,7 @@
         <TextView
             android:id="@+id/textViewTab1"
             style="@style/TextViewTab"
-            android:background="@color/purple_700"
+            android:background="@android:color/holo_red_light"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -17,7 +17,7 @@
         <TextView
             style="@style/TextViewTab"
             android:id="@+id/textViewTab2"
-            android:background="@color/purple_500"
+            android:background="@android:color/holo_red_light"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -25,7 +25,7 @@
         <TextView
             style="@style/TextViewTab"
             android:id="@+id/textViewTab3"
-            android:background="@color/purple_500"
+            android:background="@android:color/holo_red_light"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
